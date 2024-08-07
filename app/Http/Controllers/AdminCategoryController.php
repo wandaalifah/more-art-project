@@ -13,7 +13,6 @@ class AdminCategoryController extends Controller
     {
         $categories = Category::latest()->paginate(5);
 
-        //render view with posts
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -32,7 +31,7 @@ class AdminCategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     public function edit($id): View
@@ -50,7 +49,7 @@ class AdminCategoryController extends Controller
             'name'     => $request->name,
         ]);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
      /**
@@ -63,7 +62,6 @@ class AdminCategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        //render view with posts
         return view('admin.categories.show', compact('category'));
     }
 
@@ -79,6 +77,6 @@ class AdminCategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
