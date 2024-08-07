@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminProjectController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/projects', \App\Http\Controllers\ProjectController::class);
-Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
-Route::resource('/', \App\Http\Controllers\HomeController::class );
+Route::prefix('admin')->group(function () {
+    Route::resource('/projects', AdminProjectController::class);
+    Route::resource('/categories', AdminCategoryController::class);
+    // Route::resource('/', AdminHomeController::class);
+});
+
+// Route::resource('/projects', ProjectController::class);
+// Route::resource('/categories', CategoryController::class);
+Route::resource('/', HomeController::class);
