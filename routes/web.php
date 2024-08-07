@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/projects', \App\Http\Controllers\ProjectController::class);
+Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
 Route::resource('/', \App\Http\Controllers\HomeController::class );
