@@ -30,6 +30,7 @@
                                 <th scope="col">Client</th>
                                 <th scope="col">Agency</th>
                                 <th scope="col">PH</th>
+                                <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -42,15 +43,15 @@
                                     <td>{{ $project->client }}</td>
                                     <td>{{ $project->agency }}</td>
                                     <td>{{ $project->ph }}</td>
-                                    {{-- <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $project->id) }}" method="POST">
-                                            <a href="{{ route('posts.show', $project->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('posts.edit', $project->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <td class="text-center">
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                            <a href="{{ route('projects.show', $project->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                                         </form>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
@@ -63,6 +64,13 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-4">
+            <a href="{{ route('projects.create') }}" >
+              <div class="btn btn-success" >  
+                Create
+              </div>
+            </a>
+          </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
