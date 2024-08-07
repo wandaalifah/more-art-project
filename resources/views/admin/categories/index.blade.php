@@ -1,87 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categories</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-
-<body style="background: lightgray">
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Categories</h3>
-                    <hr>
-                </div>
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($categories as $category)
-                                    <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td class="flex">
-                                          <a href="{{ route('categories.edit', $category->id) }}">
-                                            <div class="btn btn-warning mr-2">
-                                              Update
-                                            </div>
-                                          </a>
-                                          <a href="{{ route('categories.show', $category->id) }}">
-                                            <div class="btn btn-danger">
-                                              Delete
-                                            </div>
-                                          </a>
-                                          </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <div class="alert alert-danger">
-                                        Category data is empty.
-                                    </div>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+@section('content')
+    <div class="flex justify-center">
+        <div class="container mt-5 px-10">
+            <p class="text-center font-bold text-2xl my-4">Categories</p>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                ID
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 flex justify-center">
+                                <span>Action</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($categories as $category)
+                        <tr class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $category->id }}
+                            </th>
+                            <td class="px-6 py-4 text-gray-900">
+                                {{ $category->name }}
+                            </td>
+                            <td class="flex py-2 space-x-3 justify-center">
+                                <a href="{{ route('categories.edit', $category->id) }}">
+                                    <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:focus:ring-yellow-900">
+                                        Update
+                                    </button>
+                                </a>
+                                <a href="{{ route('categories.destroy', $category->id) }}">
+                                    <button type="button" class="text-white-900 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        @empty
+                        <div class="alert alert-danger">
+                            Category data is empty.
+                        </div>
+                    @endforelse
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <div class="row mt-4">
-          <a href="{{ route('categories.create') }}" >
-            <div class="btn btn-success" >  
-              Create
+    
+            <div class="mt-4">
+              <a href="{{ route('categories.create') }}" >
+                <button type="button" class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    Create
+                </button>
+              </a>
             </div>
-          </a>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        //message with toastr
-        @if (session()->has('success'))
-
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
-        @elseif (session()->has('error'))
-
-            toastr.error('{{ session('error') }}', 'GAGAL!');
-        @endif
-    </script>
-</body>
-
-</html>
+@endsection
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

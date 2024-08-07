@@ -76,7 +76,6 @@ class AdminCategoryController extends Controller
     public function destroy($id): RedirectResponse
     {
         $category= Category::find($id);
-        // Category::destroy($id);
 
         $category->delete();
 
