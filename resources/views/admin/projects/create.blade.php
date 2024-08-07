@@ -29,14 +29,20 @@
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Create Project
           </h5>
-          {{-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> --}}
+          <div class="form-group">
+            <label >Category</label>
+            <select name="categoryId" class="form-control" id="">
+                <option value="">--Pilih Category--</option>
+                @forelse ( $categories as $category)
+                <option value={{$category->id}}>{{$category->name}}</option>
+                @empty
+                <option value="">Tidak ada Category</option>
+                @endforelse
+            </select>
+          </div>{{-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> --}}
           <div class="form-group">
             <label >Title</label>
             <input type="string" name="title" class="form-control">
-          </div>
-          <div class="form-group">
-            <label >Category</label>
-            <input type="number" name="categoryId" class="form-control">
           </div>
           <div class="form-group">
             <label >Description</label>

@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Project;
+use App\Models\Category;
 
 class AdminProjectController extends Controller
 {
@@ -19,14 +20,15 @@ class AdminProjectController extends Controller
 
     public function create(): View
     {
-        return view('projects.create');
+        $categories = Category::all();
+        return view('admin.projects.create', compact('categories'));
     }
 
     public function store(Request $request) : RedirectResponse
     {
        $this->validate($request, [
             'title' => 'required|string|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'videoUrl' => 'required|min:5',
             'client' => 'required',
             'agency' => 'required',
@@ -50,8 +52,9 @@ class AdminProjectController extends Controller
     public function edit($id): View
     {
         $project = Project::findOrFail($id);
+        $categories = Category::all();
 
-        return view('projects.edit', compact('project'));
+        return view('admin.projects.edit', ['project' => $project, 'categories' => $categories]);
     }
 
     public function update(Request $request, string $id): RedirectResponse
@@ -84,7 +87,7 @@ class AdminProjectController extends Controller
     public function show(string $id): View
     {
         $project = Project::findOrFail($id);
-        return view('projects.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
 
     public function destroy($id): RedirectResponse
