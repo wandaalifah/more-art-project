@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex flex-col h-screen">
-    <header class="flex justify-center sticky top-0">
+    <header class="flex justify-center fixed top-0 left-0 right-0">
         <div class="bg-blue-900 text-white-900 my-10 flex justify-start font-lora w-fit rounded-3xl px-8">
             <img src="{{URL::asset('/image/moreart-logo-alt.png')}}" alt="logo" class="w-8 h-8 mt-3 mr-10">
             <p class="my-2 py-2 px-6 mx-2 bg-gray-400/60 rounded-3xl">Home</p>
