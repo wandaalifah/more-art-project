@@ -20,7 +20,7 @@ class AdminProjectController extends Controller
 
     public function create(): View
     {
-        $categories = Category::all();
+        $projects = Project::all();
         return view('admin.projects.create', compact('categories'));
     }
 

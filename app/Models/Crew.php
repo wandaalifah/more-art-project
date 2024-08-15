@@ -15,7 +15,6 @@ class Crew extends Model
     protected $fillable = [
         'name',
         'role',
-        'projectId',
     ];
 
     /**
@@ -33,6 +32,6 @@ class Crew extends Model
      */
     public function project()
     {
-        return $this->belongsTo(Project::class, 'projectId');
+        return $this->belongsToMany(Project::class, 'projectId');
     }
 }

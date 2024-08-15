@@ -47,6 +47,6 @@ class Project extends Model
      */
     public function crews()
     {
-        return $this->hasMany(Crew::class, 'projectId');
+        return $this->belongsToMany(Crew::class, 'projectId');
     }
 }

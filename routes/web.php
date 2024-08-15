@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminCrewController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -20,6 +21,7 @@ use App\Http\Controllers\HomeController;
 Route::prefix('admin')->group(function () {
     Route::resource('/projects', AdminProjectController::class);
     Route::resource('/categories', AdminCategoryController::class);
+    Route::resource('/crews', AdminCrewController::class);
     // Route::resource('/', AdminHomeController::class);
 });
 
