@@ -21,6 +21,7 @@ class AdminProjectController extends Controller
     public function create(): View
     {
         $projects = Project::all();
+        $categories = Category::all();
         return view('admin.projects.create', compact('categories'));
     }
 
@@ -31,8 +32,8 @@ class AdminProjectController extends Controller
             'description' => 'required',
             'videoUrl' => 'required|min:5',
             'client' => 'required',
-            'agency' => 'required',
-            'ph' => 'required',
+            'agency' => 'nullable',
+            'ph' => 'nullable',
             'categoryId' => 'required',
         ]);
 
@@ -61,11 +62,11 @@ class AdminProjectController extends Controller
     {   
         $this->validate($request, [
             'title' => 'required|string|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'videoUrl' => 'required',
             'client' => 'required',
-            'agency' => 'required',
-            'ph' => 'required',
+            'agency' => 'nullable',
+            'ph' => 'nullable',
             'categoryId' => 'required',
         ]);
 

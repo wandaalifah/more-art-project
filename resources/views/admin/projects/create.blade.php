@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  @vite(['resources/css/app.css','resources/js/app.js'])
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Create Project</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-<body style="background: lightgray">
-  <div class="container">
+@extends('layouts.admin')
+
+
+@section('content')
+  <div class="flex justify-center items-center mt-8">
 
     @if($errors->any())
     <div class="alert alert-danger">
@@ -25,13 +17,13 @@
     <form action="{{ route('projects.store') }}" method="post">
       @csrf
       <div class="mt-5">
-        <div class="justify-center text-center p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-full max-w-sm bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Create Project
           </h5>
           <div class="form-group">
-            <label >Category</label>
-            <select name="categoryId" class="form-control" id="">
+            <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Category</label>
+            <select name="categoryId" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm" id="">
                 <option value="">--Pilih Category--</option>
                 @forelse ( $categories as $category)
                 <option value={{$category->id}}>{{$category->name}}</option>
@@ -40,37 +32,38 @@
                 @endforelse
             </select>
           </div>{{-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> --}}
-          <div class="form-group">
-            <label >Title</label>
-            <input type="string" name="title" class="form-control">
+          <div class="form-group mb-4">
+            <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Title</label>
+            <input type="string" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
           </div>
-          <div class="form-group">
-            <label >Description</label>
-            <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+          <div class="form-group mb-4">
+            <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Description</label>
+            <textarea name="description" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm" id="" cols="30" rows="10"></textarea>
           </div>
-          <div class="form-group">
-            <label for="videoUrl">Video URL</label>
-            <input type="text" name="videoUrl" class="form-control" value="{{ old('videoUrl') }}">
+          <div class="form-group mb-4">
+            <label for="videoUrl" class="block mb-2 text-lg font-medium text-gray-900 my-4">Video URL</label>
+            <input type="text" name="videoUrl" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm" value="{{ old('videoUrl') }}">
         </div>
-          <div class="form-group">
-              <label >Client</label>
-              <input type="string" name="client" class="form-control">
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Client</label>
+              <input type="string" name="client" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
           </div>
-          <div class="form-group">
-            <label >Agency</label>
-            <input type="string" name="agency" class="form-control">
+          <div class="form-group mb-4">
+            <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Agency</label>
+            <input type="string" name="agency" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         </div>
-        <div class="form-group">
-            <label >PH</label>
-            <input type="string" name="ph" class="form-control">
+        <div class="form-group mb-4">
+            <label class="block mb-2 text-lg font-medium text-gray-900 my-4">PH</label>
+            <input type="string" name="ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         </div>
-          <div class="text-center mt-4">
-            <input type="submit" class="btn btn-success" value="Submit">
-          </div>
+        <div class="text-center mt-6">
+          <input type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center" value="Submit">
+      </div>
         </div>
       </div>
     </form>
   </div>
+  @endsection
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

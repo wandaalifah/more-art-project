@@ -1,82 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  @vite(['resources/css/app.css','resources/js/app.js'])
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Create Project</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-<body style="background: lightgray">
-  <div class="container">
+@extends('layouts.admin')
 
-    @if($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li> 
-        @endforeach
-      </ul>
-    </div>
-    @endif
 
-    <form action="{{ route('projects.update', $project->id) }}" method="post">
+@section('content')
+
+<div class="flex justify-center items-center mt-8">
+  @if($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li> 
+              @endforeach
+          </ul>
+      </div>
+  @endif
+
+  <form action="{{ route('projects.update', $project->id) }}" method="post">
       @csrf
       @method('PUT')
-      <div class="mt-5">
-        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div class="w-full max-w-sm bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Update Project
-            </h5>
-            <div class="form-group">
-              <label >Category</label>
-              <select name="categoryId" class="form-control" id="">
+          </h5>
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Category</label>
+              <select name="categoryId" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                   <option value="">--Pilih Category--</option>
-                  @forelse ( $categories as $category)
-                  <option value={{$category->id}}>{{$category->name}}</option>
+                  @forelse ($categories as $category)
+                      @if ($category->id === $project->categoryId)
+                      <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+
+                      @else
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endif
                   @empty
-                  <option value="">Tidak ada Category</option>
+                      <option value="">Tidak ada Category</option>
                   @endforelse
               </select>
-            </div>
-          {{-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> --}}
-          <div class="form-group">
-            <label >Title</label>
-            <input type="string" name="title" class="form-control">
           </div>
-          <div class="form-group">
-            <label >Category</label>
-            <input type="number" name="categoryId" class="form-control">
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Title</label>
+              <input type="text" name="title" value="{{ $project->title }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
           </div>
-          <div class="form-group">
-            <label >Description</label>
-            <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Description</label>
+              <textarea name="description" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm" cols="30" rows="4">{{ $project->description }}</textarea>
           </div>
-          <div class="form-group">
-            <label for="videoUrl">Video URL</label>
-            <input type="text" name="videoUrl" class="form-control" value="{{ old('videoUrl') }}">
-        </div>
-          <div class="form-group">
-              <label >Client</label>
-              <input type="string" name="client" class="form-control">
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Video URL</label>
+              <input type="text" name="videoUrl" value="{{ $project->videoUrl }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
           </div>
-          <div class="form-group">
-            <label >Agency</label>
-            <input type="string" name="agency" class="form-control">
-        </div>
-        <div class="form-group">
-            <label >PH</label>
-            <input type="string" name="ph" class="form-control">
-        </div>
-          <div class="text-center mt-4">
-            <input type="submit" class="btn btn-success" value="Submit">
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Client</label>
+              <input type="text" name="client" value="{{ $project->client }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
           </div>
-        </div>
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Agency</label>
+              <input type="text" name="agency" value="{{ $project->agency }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          </div>
+          <div class="form-group mb-4">
+              <label class="block mb-2 text-lg font-medium text-gray-900 my-4">PH</label>
+              <input type="text" name="ph" value="{{ $project->ph }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          </div>
+          <div class="text-center mt-6">
+              <input type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center" value="Submit">
+          </div>
       </div>
-    </form>
-  </div>
+  </form>
+</div>
+
+
+@endsection
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

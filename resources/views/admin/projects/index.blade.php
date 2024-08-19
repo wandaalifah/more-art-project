@@ -37,12 +37,12 @@
                                 {{ $project->client }}
                             </td>
                             <td class="px-6 py-4 text-gray-900">
-                                {{ $project->agency }}
+                                {{ $project->agency ?? '-' }}
                             </td>
                             <td class="px-6 py-4 text-gray-900">
-                                {{ $project->ph }}
+                                {{ $project->ph ?? '-'}}
                             </td>
-                            <td class="flex py-2 space-x-3 justify-center">
+                            <td class="flex py-2 space-x-3 justify-center my-4">
                                 <a href="{{ route('projects.edit', $project->id) }}">
                                     <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                         Update
@@ -70,13 +70,14 @@
             </table>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 flex justify-end">
             <a href="{{ route('projects.create') }}">
-                <button type="button" class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                <button type="button" class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-md px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     Create
                 </button>
             </a>
         </div>
+        
     </div>
 </div>
 @endsection
