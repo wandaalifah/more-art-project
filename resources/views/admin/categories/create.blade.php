@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  @vite(['resources/css/app.css','resources/js/app.js'])
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Create Category</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-</head>
-<body style="background: lightgray">
-  <div class="container">
+@extends('layouts.admin')
 
+@section('content')
+
+  <div class="flex justify-center items-center">
     @if($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -22,41 +13,30 @@
     </div>
     @endif
 
-    <form action="{{ route('categories.store') }}" method="post">
+    <form action="{{ route('categories.store') }}" method="post" class="">
       @csrf
-      <div class="mt-5">
-        <div class="justify-center text-center p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Create Category
-          </h5>
-          {{-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> --}}
-          <p class="text-xl font-bold">
-            Name
-          </p>
+        <div class="w-full max-w-sm bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+          <a href="{{route('categories.index')}}">
+            <div class="flex justify-center mb-6">
+              <svg class="w-[45px] h-[45px] text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+              </svg>            
+            </div>
+          </a>
+          <h5 class="text-xl font-bold text-gray-90 px-12">Create Category</h5>
           <div>
-            <input type="text" id="name" name="name" value="{{ old('name') }}">
+              <label for="name" class="block mb-2 text-lg font-medium text-gray-900 my-4">Name</label>
+              <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
           </div>
-          <div class="text-center mt-4">
-            <input type="submit" class="btn btn-success" value="Submit">
+          <div class="flex justify-center mx-8 pt-8 text-center align-middle">
+            <button type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center">
+              Submit
+            </button>
           </div>
         </div>
-      </div>
     </form>
   </div>
+  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-  <script>
-      //message with toastr
-      @if (session()->has('success'))
-
-          toastr.success('{{ session('success') }}', 'BERHASIL!');
-      @elseif (session()->has('error'))
-
-          toastr.error('{{ session('error') }}', 'GAGAL!');
-      @endif
-  </script>
-</body>
-</html>
+@endsection
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
