@@ -88,7 +88,8 @@ class AdminProjectController extends Controller
     public function show(string $id): View
     {
         $project = Project::findOrFail($id);
-        return view('admin.projects.show', compact('project'));
+        // return view('admin.projects.show', compact('project'));
+        return view('admin.projects.show', ['project' => $project]);
     }
 
     public function destroy($id): RedirectResponse

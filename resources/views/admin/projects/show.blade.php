@@ -1,48 +1,39 @@
-<!-- resources/views/projects/show.blade.php -->
-
-@extends('layouts.default')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card">
-                <div class="card-header">Project Details</div>
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Title</th>
-                            <td>{{ $project->title }}</td>
-                        </tr>
-                        <tr>
-                            <th>Category</th>
-                            <td>{{ $project->categoryId }}</td>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <td>{{ $project->description }}</td>
-                        </tr>
-                        <tr>
-                            <th>URL</th>
-                            <td><a href="{{ $project->videoUrl }}" target="_blank">{{ $project->videoUrl }}</a></td>
-                        </tr>
-                        <tr>
-                            <th>Client</th>
-                            <td>{{ $project->client }}</td>
-                        </tr>
-                        <tr>
-                            <th>Agency</th>
-                            <td>{{ $project->agency }}</td>
-                        </tr>
-                        <tr>
-                            <th>PH</th>
-                            <td>{{ $project->ph }}</td>
-                        </tr>
-                    </table>
-                    <a href="{{ route('projects.index') }}" class="btn btn-primary">Back to Projects</a>
-                </div>
-            </div>
+    <div class="flex justify-center items-center">
+        @if($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li> 
+            @endforeach
+        </ul>
         </div>
+        @endif
+
+        <form action="{{ route('projects.destroy', $project->id) }}" method="post">
+            @csrf
+            @method("DELETE")
+              <div class="w-full max-w-sm bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-center">
+                <a href="{{route('categories.index')}}">
+                  <div class="flex justify-center mb-6">
+                    <svg class="w-[45px] h-[45px] text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+                    </svg>            
+                  </div>
+                </a>
+                <h5 class="text-xl font-bold text-gray-90 px-12">Delete Project</h5>
+                <p class="text-xl font-bold">
+                  {{$project->id}} - {{ $project->title }} ?
+                </p>
+                <div class="flex justify-center mx-8 pt-8 align-middle">
+                  <button type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center">
+                    Submit
+                  </button>
+                </div>
+              </div>
+        </form>
     </div>
-</div>
 @endsection
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
