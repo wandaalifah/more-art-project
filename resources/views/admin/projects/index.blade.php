@@ -42,18 +42,21 @@
                                 <td class="px-6 py-4 text-gray-900">
                                     {{ $project->ph ?? '-'}}
                                 </td>
-                                <td class="flex py-2 space-x-3 justify-center my-4">
+                                <td class="flex py-2 space-x-3 justify-center m-4">
+                                    <a href="">
+                                        <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                            Detail
+                                        </button>
+                                    </a>
                                     <a href="{{ route('projects.edit', $project->id) }}">
                                         <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Update
                                         </button>
                                     </a>
                                     <a href="{{ route('projects.destroy', $project->id) }}">
-                                    {{-- <form action="{{ route('projects.destroy', $project->id) }}"> --}}
                                         <button type="submit" class="text-white-900 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Delete
                                         </button>
-                                    {{-- </form> --}}
                                     </a>
                                 </td>
                             </tr>
