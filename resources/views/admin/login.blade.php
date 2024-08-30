@@ -15,7 +15,6 @@
 
     <form action="" method="post" class="">
       @csrf
-      @method('PUT')
         <div class="w-full bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
           <a href="{{ url('/') }}">
             <div class="flex justify-center mb-6">
@@ -26,18 +25,19 @@
           </a>
           <h5 class="text-xl font-bold text-gray-90 px-12 text-center">Log In</h5>
           <div>
-              <label for="name" class="block mb-2 text-lg font-medium text-gray-900 my-4">Username</label>
-              <input type="text" id="name" name="name" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              <label for="username" class="block mb-2 text-lg font-medium text-gray-900 my-4">Username</label>
+              <input type="text" id="username" name="username" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
           </div>
           <div>
-              <label for="name" class="block mb-2 text-lg font-medium text-gray-900 my-4">Password</label>
-              <input type="text" id="name" name="name" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              <label for="password" class="block mb-2 text-lg font-medium text-gray-900 my-4">Password</label>
+              <input type="password" id="password" name="password" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
           </div>
-          <div class="flex justify-center mx-8 pt-8 text-center align-middle">
-            <button type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center">
-              Submit
-            </button>
-          </div>
+          
+            <div class="flex justify-center mx-8 pt-8 text-center align-middle">
+              <button type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center">
+                Submit
+              </button>
+            </div>
         </div>
     </form>
   </div>

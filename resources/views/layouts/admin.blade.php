@@ -19,6 +19,7 @@
                     <img src="{{URL::asset('/image/moreart-logo.png')}}" class="h-8" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap">Home</span>
                 </a>
+              @auth
                 <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
@@ -33,19 +34,22 @@
                         </div>
                         <ul class="py-2 bg-white-900" aria-labelledby="user-menu-button">
                           <li>
-                            <a href="{{ url('/') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            <a href="{{ url('/') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                               Home
                             </a>
                           </li>
                           <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            <a href="#" style="pointer-events: none; cursor: not-allowed;" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                               Change Password
                             </a>
                           </li>
                           <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                              Sign out
-                            </a>
+                            <form action="/admin/logout" method="post">
+                              @csrf
+                              <button type="submit" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                Sign out
+                              </button>
+                            </form>
                           </li>
                         </ul>
                       </div>
@@ -69,6 +73,7 @@
                     </li>
                 </ul>
                 </div>
+                @endauth
             </div>
         </nav>
   

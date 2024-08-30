@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
@@ -20,12 +21,14 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::prefix('admin')->group(function () {
-    // Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
         Route::resource('/projects', AdminProjectController::class);
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/crews', AdminCrewController::class);
-        Route::get('/', [AdminController::class, 'index']);
-    // });
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
+    Route::post('/', [AuthController::class, 'login'])->name('admin.login');
+    Route::get('/', [AdminController::class, 'index']);
 });
 
 Route::resource('/', HomeController::class);
