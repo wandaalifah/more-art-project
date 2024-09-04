@@ -34,19 +34,19 @@
                         </div>
                         <ul class="py-2 bg-white-900" aria-labelledby="user-menu-button">
                           <li>
-                            <a href="{{ url('/') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            <a href="{{ url('/') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200">
                               Home
                             </a>
                           </li>
                           <li>
-                            <a href="#" style="pointer-events: none; cursor: not-allowed;" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            <a href="{{ route('admin.changePassword') }}" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200">
                               Change Password
                             </a>
                           </li>
                           <li>
                             <form action="/admin/logout" method="post">
                               @csrf
-                              <button type="submit" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                              <button type="submit" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-200">
                                 Sign out
                               </button>
                             </form>

@@ -26,6 +26,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/crews', AdminCrewController::class);
         Route::post('/logout', [AuthController::class, 'logout']);
+        Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('admin.changePassword');
+        Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
     });
     Route::post('/', [AuthController::class, 'login'])->name('admin.login');
     Route::get('/', [AdminController::class, 'index']);
