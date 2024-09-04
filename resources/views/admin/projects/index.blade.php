@@ -8,6 +8,7 @@
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
+                            <th scope="col" class="px-6 py-3">ID</th>
                             <th scope="col" class="px-6 py-3">Title</th>
                             <th scope="col" class="px-6 py-3">Category</th>
                             <th scope="col" class="px-6 py-3">Description</th>
@@ -22,8 +23,11 @@
                         @forelse ($projects as $project)
                             <tr class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $project->title }}
+                                    {{ $project->id }}
                                 </th>
+                                <td class="px-6 py-4 text-gray-900">
+                                    {{ $project->title }}
+                                </td>
                                 <td class="px-6 py-4 text-gray-900">
                                     {{ $project->category->name }}
                                 </td>
