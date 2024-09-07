@@ -9,9 +9,14 @@ use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function index(): View
+    public function index(): RedirectResponse|View
     {
-        //render view with posts
+        if (Auth::check()) {
+            // Redirect to admin/categories if logged in
+            // return redirect()->route('admin.categories.index');
+            return redirect()->intended('admin/categories');
+        }
+
         return view('admin.login');
     }
 
