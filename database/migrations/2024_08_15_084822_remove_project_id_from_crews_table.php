@@ -9,9 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up(): void
+    public function up(): void
     {
         Schema::table('crews', function (Blueprint $table) {
+            $table->dropForeign('crews_projectid_foreign');
             $table->dropColumn('projectId');
         });
     }

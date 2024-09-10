@@ -67,6 +67,9 @@
             <label class="block mb-2 text-lg font-medium text-gray-900 my-4">PH</label>
             <input type="text" name="ph" value="{{ $project->ph }}" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
         </div>
+        <div class="form-group mb-4">
+            <a href="/admin/projects/{{ $project->id }}/photos" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Photos</a>
+        </div>
         <div class="text-center mt-6">
             <input type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center" value="Submit">
         </div>
