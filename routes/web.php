@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminCrewController;
+use App\Http\Controllers\AdminProjectPhotosController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -28,6 +29,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('admin.changePassword');
         Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
+
+        Route::resource('projects.photos', AdminProjectPhotosController::class);
     });
     Route::post('/', [AuthController::class, 'login'])->name('admin.login');
     Route::get('/', [AdminController::class, 'index']);
