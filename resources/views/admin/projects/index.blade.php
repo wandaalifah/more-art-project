@@ -52,6 +52,11 @@
                                             Detail
                                         </button>
                                     </a>
+                                    <a href="{{ route('projects.photos.index', $project->id) }}">
+                                        <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                            Photos
+                                        </button>
+                                    </a>
                                     <a href="{{ route('projects.edit', $project->id) }}">
                                         <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Update
