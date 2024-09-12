@@ -12,4 +12,10 @@ class HomeController extends Controller
         //render view with posts
         return view('home.index');
     }
+
+    public function works(): View
+    {
+        //render view with posts
+        return view('home.works');
+    }
 }

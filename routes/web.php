@@ -33,4 +33,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
 });
 
-Route::resource('/', HomeController::class);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/works', [HomeController::class, 'works'])->name('home.works');
