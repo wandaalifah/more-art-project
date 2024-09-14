@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class AdminProjectPhotosController extends Controller
 {
@@ -17,9 +18,11 @@ class AdminProjectPhotosController extends Controller
         foreach ($media as $value) {
             $value->url = parse_url($value->getUrl())['path'];
         }
+        // dd($media->toArray());
 
         return view('admin.projects.photos.index', [
-            'media' => $media
+            'media' => $media,
+            'project' => $project
         ]);
     }
 
@@ -73,8 +76,11 @@ class AdminProjectPhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project, $mediaId)
     {
-        //
+        $media = $project->getMedia()->find($mediaId);
+        $media->delete();
+
+        return redirect()->back();
     }
 }
