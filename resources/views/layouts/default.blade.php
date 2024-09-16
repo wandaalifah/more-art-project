@@ -15,12 +15,14 @@
         <div class="bg-blue-900 text-white-900 my-10 flex justify-start font-lora w-fit rounded-3xl px-8">
             <img src="{{URL::asset('/image/moreart-logo-alt.png')}}" alt="logo" class="w-8 h-8 mt-3 mr-10">
             <a href="{{ url('/') }}">
-                <p class="my-2 py-2 px-6 mx-2 bg-gray-400/60 rounded-3xl">Home</p>
+                <p class="my-2 py-2 px-6 mx-2 {{ Route::is('home.index') ? 'bg-gray-400/60 rounded-3xl' : '' }}">Home</p>
             </a>
             <a href="{{ route('home.works') }}">
-                <p class="my-2 py-2 px-6 mx-2">Works</p>
+                <p class="my-2 py-2 px-6 mx-2 {{ Route::is('home.works') ? 'bg-gray-400/60 rounded-3xl' : '' }}">Works</p>
             </a>
-            <p class="my-2 py-2 px-6 mx-2">About</p>
+            <a href="{{ route('home.about') }}">
+                <p class="my-2 py-2 px-6 mx-2 {{ Route::is('home.about') ? 'bg-gray-400/60 rounded-3xl' : '' }}">About</p>
+            </a>
         </div>
     </header>
     <div class="flex-grow">

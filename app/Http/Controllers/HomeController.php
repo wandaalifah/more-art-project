@@ -18,4 +18,10 @@ class HomeController extends Controller
         //render view with posts
         return view('home.works');
     }
+
+    public function about(): View
+    {
+        //render view with posts
+        return view('home.about');
+    }
 }
