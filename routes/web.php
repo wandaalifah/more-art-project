@@ -30,7 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('admin.changePassword');
         Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
 
-        Route::resource('projects.photos', AdminProjectPhotosController::class)->only(['index', 'store', 'delete']);
+        Route::resource('projects.photos', AdminProjectPhotosController::class)->only(['index', 'store', 'destroy']);
     });
     Route::post('/', [AuthController::class, 'login'])->name('admin.login');
     Route::get('/', [AdminController::class, 'index']);
