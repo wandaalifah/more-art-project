@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -17,10 +17,20 @@ class HomeController extends Controller
 
     public function works(): View
     {
-        $categories = Category::latest();
+        $projects = Project::latest()->get();
         
-        //render view with posts]
-        return view('home.works',compact('categories'));
+        //render view with posts
+        // return view('home.works',compact('projects'));
+        foreach ($projects as $project) {
+            $firstMedia = $project->getMedia()->first();
+            if ($firstMedia) {
+                $project->first_image_url = parse_url($firstMedia->getUrl())['path'];
+            } else {
+                $project->first_image_url = null; // Set a default or handle if no image is available
+            }
+        }
+
+        return view('home.works', compact('projects'));
     }
 
     public function about(): View

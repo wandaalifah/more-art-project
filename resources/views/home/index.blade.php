@@ -1,24 +1,22 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="bg-[#EFF0F2] py-40 my-40 text-center">
-        <h1 class="text-8xl font-dmSerif  ">
+    <div class="bg-[#EFF0F2] my-40 lg:py-32 py-16 text-center w-full flex-col justify-center">
+        <h1 class="lg:text-8xl text-5xl font-dmSerif mx-8">
             Hi, I'm Fathur.<br>
             An Art Director.
         </h1>
-
-        <p class="font-normal text-4xl font-lora mt-12">
+        <p class="font-normal lg:text-4xl text-xl font-lora mt-12 mx-8">
             I'm passionate about crafting experiences that are<br>
             engaging, accessible, and user-centric.
         </p>
     </div>
-
     <div class="m-10 px-32">
         <h1 class="text-7xl font-dmSerif pb-8 text-center">
             Magnum Opus
         </h1>
 
-        <div class="grid gap-y-8 gap-x-8 grid-rows-2 m-10 px-32">
+        <div class="grid gap-8 grid-rows-2 m-10 px-32">
             <div class="flex justify-center gap-x-8">
                 <div class="relative group hover:scale-110 transition-transform duration-300 ease-in-out">
                     <img class="w-64 rounded-3xl transition-transform duration-300 ease-in-out transform hover:bg-opacity-90"
@@ -72,50 +70,42 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
-    <p class="text-7xl font-dmSerif  text-center">
+    <p class="text-7xl font-dmSerif text-center">
         Services
     </p>
-
-    <div class="mx-16 p-20">
-        <div class="grid grid-cols-3 place-items-center">
-            <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow">
-                <img class="rounded-t-3xl h-60 overflow-hidden" src="/image/service1.jpg" alt="" />
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 1</h5>
-                    </a>
-                    <p class="mb-3 font-normal font-lora">Here are the biggest enterprise technology acquisitions of 2021 so
-                        far, in
-                        reverse chronological order.</p>
-                </div>
+    <div class="mx-16 p-20 lg:flex justify-center items-center lg:gap-4">
+        <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow mx-auto mb-8">
+            <img class="rounded-t-3xl max-h-60 overflow-hidden object-cover" src="/image/service1.jpg" alt="" />
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 1</h5>
+                </a>
+                <p class="mb-3 font-normal font-lora">Here are the biggest enterprise technology acquisitions of 2021 so
+                    far, in
+                    reverse chronological order.</p>
             </div>
-
-            <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow">
-                <img class="rounded-t-3xl h-60 overflow-hidden" src="/image/service2.jpg" alt="" />
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 2</h5>
-                    </a>
-                    <p class="mb-3 font-normal  font-lora">Here are the biggest enterprise technology acquisitions of 2021
-                        so far, in
-                        reverse chronological order.</p>
-                </div>
+        </div>
+        <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow mx-auto mb-8">
+            <img class="rounded-t-3xl max-h-60 overflow-hidden" src="/image/service2.jpg" alt="" />
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 2</h5>
+                </a>
+                <p class="mb-3 font-normal  font-lora">Here are the biggest enterprise technology acquisitions of 2021
+                    so far, in
+                    reverse chronological order.</p>
             </div>
-
-            <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow">
-                <img class="rounded-t-3xl h-60 overflow-hidden" src="/image/service3.jpg" alt="" />
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 3</h5>
-                    </a>
-                    <p class="mb-3 font-normal font-lora">Here are the biggest enterprise technology acquisitions of 2021 so
-                        far, in reverse chronological order.</p>
-                </div>
+        </div>
+        <div class="max-w-sm bg-white border bg-blue-900 text-white-900 border-gray-200 rounded-3xl shadow mx-auto mb-8">
+            <img class="rounded-t-3xl max-h-60 overflow-hidden" src="/image/service3.jpg" alt="" />
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight font-lora">Service 3</h5>
+                </a>
+                <p class="mb-3 font-normal font-lora">Here are the biggest enterprise technology acquisitions of 2021 so
+                    far, in reverse chronological order.</p>
             </div>
         </div>
     </div>
