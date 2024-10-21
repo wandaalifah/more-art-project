@@ -51,6 +51,6 @@ class Project extends Model implements HasMedia
      */
     public function crews()
     {
-        return $this->belongsToMany(Crew::class, 'projectId');
+        return $this->belongsToMany(Crew::class, 'project_crew')->withPivot('role');
     }
 }

@@ -21,8 +21,10 @@
                     </thead>
                     <tbody>
                         @forelse ($projects as $project)
-                            <tr class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr
+                                class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $project->id }}
                                 </th>
                                 <td class="px-6 py-4 text-gray-900">
@@ -32,7 +34,7 @@
                                     {{ $project->category->name }}
                                 </td>
                                 <td class="px-6 py-4 text-gray-900">
-                                    {{Str::limit($project->description, 80)}}
+                                    {{ Str::limit($project->description, 80) }}
                                 </td>
                                 <td class="px-6 py-4 text-gray-900">
                                     {{ $project->videoUrl }}
@@ -44,26 +46,30 @@
                                     {{ $project->agency ?? '-' }}
                                 </td>
                                 <td class="px-6 py-4 text-gray-900">
-                                    {{ $project->ph ?? '-'}}
+                                    {{ $project->ph ?? '-' }}
                                 </td>
                                 <td class="flex py-2 space-x-3 justify-center m-4">
-                                    <a href="">
-                                        <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                    <a href="{{ route('projects.detail', $project->id) }}">
+                                        <button type="button"
+                                            class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Detail
                                         </button>
                                     </a>
                                     <a href="{{ route('projects.photos.index', $project->id) }}">
-                                        <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                        <button type="button"
+                                            class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Photos
                                         </button>
                                     </a>
                                     <a href="{{ route('projects.edit', $project->id) }}">
-                                        <button type="button" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                        <button type="button"
+                                            class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Update
                                         </button>
                                     </a>
                                     <a href="{{ route('projects.destroy', $project->id) }}">
-                                        <button type="submit" class="text-white-900 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                                        <button type="submit"
+                                            class="text-white-900 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center">
                                             Delete
                                         </button>
                                     </a>
@@ -81,17 +87,18 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="flex justify-between items-center mt-4">
                 <div class="bg-white-900  rounded-lg">
                     {{ $projects->links() }}
                 </div>
                 <div class="items-center">
-                <a href="{{ route('projects.create') }}" >
-                    <button type="button" class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-md px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                        Create
-                    </button>
-                </a>
+                    <a href="{{ route('projects.create') }}">
+                        <button type="button"
+                            class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-md px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            Create
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -99,16 +106,16 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<script>
-    // message with toastr
-    @if(session()->has('success'))
-        toastr.success('{{ session('success') }}', 'BERHASIL!');
-    @elseif(session()->has('error'))
-        toastr.error('{{ session('error') }}', 'GAGAL!');
-    @endif
-</script>
+    <script>
+        // message with toastr
+        @if (session()->has('success'))
+            toastr.success('{{ session('success') }}', 'BERHASIL!');
+        @elseif (session()->has('error'))
+            toastr.error('{{ session('error') }}', 'GAGAL!');
+        @endif
+    </script>
 @endpush

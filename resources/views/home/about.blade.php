@@ -1,17 +1,17 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="mt-32">
+    <div class="lg:mt-32 mt-24">
         {{-- <div class="grid lg:grid-cols-2 grid-rows-2"> --}}
-        <div class="flex flex-col lg:flex-row justify-center">
-            <div class="bg-[#EFF0F2] flex justify-center items-center w-full lg:w-1/2 lg:p-0 pt-12">
+        <div class="bg-[#EFF0F2] flex flex-col lg:flex-row justify-center py-12">
+            <div class="flex justify-center items-center w-full lg:w-1/2 lg:p-0">
                 <img src="https://images.pexels.com/photos/3224230/pexels-photo-3224230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="" class="rounded-lg" style="max-height: 75%">
+                    alt="" class="rounded-lg lg:max-w-72 max-w-60">
             </div>
-            <div class="bg-[#EFF0F2] flex justify-center lg:items-center lg:w-1/2 lg:p-0 p-12">
+            <div class="flex justify-center lg:items-center lg:w-1/2 lg:p-0">
                 <div class="lg:p-24 px-12">
-                    <p class="text-4xl text-blue-900 font-bold font-dmSerif">More of More Art</p>
-                    <p class="text-black text-lg mt-10 font-lora mr-10">
+                    <p class="text-4xl text-blue-900 font-bold font-dmSerif mt-8">More of More Art</p>
+                    <p class="text-black lg:text-lg text-md mt-8 font-lora lg:mr-10">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -22,68 +22,68 @@
         </div>
 
         <div class="flex flex-col lg:flex-row justify-center">
-            <div class="p-24 lg:w-1/2 lg:ml-12">
-                <p class="text-4xl text-blue-900 font-bold font-dmSerif">The Man Behind More Art</p>
-                <div>
-                    <hr class="max-w-12 my-10 border-2 rounded-full border-blue-900">
+            <div class="lg:p-24 p-12 lg:w-1/2 lg:ml-12">
+                <p class="text-4xl text-blue-900 font-bold font-dmSerif text-center lg:text-left">The Man Behind More Art
+                </p>
+                <div class="flex justify-center lg:justify-start">
+                    <hr class="w-12 lg:my-10 my-8 border-2 rounded-full border-blue-900">
                 </div>
-                <p class="text-black text-lg font-lora mr-10">
+                <p class="text-black lg:text-lg text-md font-lora lg:mr-10">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                     the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                     of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                     but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is
                     simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                     standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting, remaining essentially unchanged.
+                    scrambled it to make a type specimen book.
                 </p>
             </div>
-            <div class="flex justify-center items-center w-full lg:w-1/2 lg:p-0 pt-12">
+            <div class="flex justify-center items-center w-full lg:w-1/2 lg:p-0">
                 <img src="https://images.pexels.com/photos/3224230/pexels-photo-3224230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="" class="rounded-lg" style="max-height: 75%">
+                    alt="" class="rounded-lg lg:max-w-72 max-w-60">
             </div>
         </div>
 
-        <div class="mt-12 lg:p-24 p-8 bg-[#EFF0F2] text-center">
+        <div class="mt-12 lg:p-12 p-8 bg-[#EFF0F2] text-center">
             <p class="text-4xl font-bold font-dmSerif mb-10">Clients</p>
-            <div class="flex justify-center align-middle gap-24 mt-8">
-                <div class="m-4 max-w-24">
+            <div class="flex flex-col lg:flex-row justify-center items-center align-middle lg:gap-24 gap-8">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
             </div>
-            <div class="flex justify-center align-middle gap-24 mt-8">
-                <div class="m-4 max-w-24">
+            <div class="flex flex-col lg:flex-row justify-center items-center align-middle lg:gap-24 gap-8 mt-8">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
-                <div class="m-4 max-w-24">
+                <div class="max-w-24">
                     <img src="https://seeklogo.com/images/T/tokopedia-logo-5340B636F6-seeklogo.com.png" alt="">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="p-24 m-10">
+    <div class="lg:m-24 m-12">
         <p class="text-4xl font-bold font-dmSerif text-center">Contact</p>
         <form action="{{ route('home.about.sendEmail') }}" method="POST" class="max-w-lg mx-auto mt-10">
             @csrf

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="my-40">
+    <div class="lg:mt-40 mt-28">
         <div class="relative">
             <img src="{{ URL::asset('/image/works-landing.jpg') }}" alt="works-landing"
                 class="w-full lg:h-[500px] h-[300px] object-cover">
@@ -9,6 +9,25 @@
                 <h1 class="text-white-900 text-center lg:text-8xl text-6xl font-bold font-dmSerif">More and More Arts</h1>
             </div>
         </div>
+
+        <div class="font-semibold font-lora">
+            <form method="GET" action="{{ route('home.works') }}">
+                <div
+                    class="flex flex-wrap justify-center gap-4 lg:mx-80 mx-24 mt-12 text-sm lg:text-md {{ request('category') == '' ? 'text-black-900' : 'text-gray-400' }}">
+                    <button type="submit" name="category" value="">
+                        All Categories
+                    </button>
+                    @foreach ($categories as $category)
+                        <span class="lg:mx-2 text-gray-400">|</span>
+                        <button type="submit" name="category" value="{{ $category->id }}"
+                            class="{{ request('category') == $category->id ? 'text-black-900' : 'text-gray-400' }}">
+                            {{ $category->name }}
+                        </button>
+                    @endforeach
+                </div>
+            </form>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-3 my-14 ml-14 mr-14">
             @forelse  ($projects as $project)
                 <div class="relative group aspect-square mx-2 mt-4 shadow-md">
@@ -31,7 +50,7 @@
                 </div>
 
             @empty
-                <div class="alert alert-danger">
+                <div class="alert alert-danger text-center">
                     Project data is empty.
                 </div>
             @endforelse

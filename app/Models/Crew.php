@@ -32,6 +32,6 @@ class Crew extends Model
      */
     public function project()
     {
-        return $this->belongsToMany(Project::class, 'projectId');
+        return $this->belongsToMany(Project::class, 'project_crew');
     }
 }

@@ -100,4 +100,10 @@ class AdminProjectController extends Controller
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
     }
+
+    public function detail(string $id): View
+    {
+        $project = Project::findOrFail($id);
+        return view('admin.projects.detail', ['project' => $project]);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -15,12 +16,18 @@ class HomeController extends Controller
         return view('home.index');
     }
 
-    public function works(): View
+    public function works(Request $request): View
     {
         $projects = Project::latest()->get();
         
-        //render view with posts
-        // return view('home.works',compact('projects'));
+        $categoryId = $request->query('category');
+    
+    // Fetch projects, filtered by category if selected
+    if ($categoryId) {
+        $projects = Project::where('categoryId', $categoryId)->latest()->get();
+    } else {
+        $projects = Project::latest()->get();
+    }
         foreach ($projects as $project) {
             $firstMedia = $project->getMedia()->first();
             if ($firstMedia) {
@@ -30,7 +37,14 @@ class HomeController extends Controller
             }
         }
 
-        return view('home.works', compact('projects'));
+        $categories = Category::all();
+
+        return view('home.works', compact('projects', 'categories'));
+    }
+
+    public function worksDetail(): View
+    {
+        return view('home.worksDetail');
     }
 
     public function about(): View
