@@ -25,7 +25,7 @@ class Project extends Model implements HasMedia
         'client',
         'agency',
         'ph',
-        'categoryId',
+        'category_id',
     ];
 
     /**
@@ -43,7 +43,7 @@ class Project extends Model implements HasMedia
      */
     public function category()
     {
-        return $this->belongsTo(Category::class, 'categoryId');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     /**
@@ -51,6 +51,6 @@ class Project extends Model implements HasMedia
      */
     public function crews()
     {
-        return $this->belongsToMany(Crew::class, 'project_crew')->withPivot('role');
+        return $this->belongsToMany(Crew::class, 'project_crew')->withPivot('role', 'id');
     }
 }

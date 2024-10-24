@@ -20,11 +20,11 @@ class HomeController extends Controller
     {
         $projects = Project::latest()->get();
         
-        $categoryId = $request->query('category');
+        $category_id = $request->query('category');
     
     // Fetch projects, filtered by category if selected
-    if ($categoryId) {
-        $projects = Project::where('categoryId', $categoryId)->latest()->get();
+    if ($category_id) {
+        $projects = Project::where('category_id', $category_id)->latest()->get();
     } else {
         $projects = Project::latest()->get();
     }
@@ -42,9 +42,11 @@ class HomeController extends Controller
         return view('home.works', compact('projects', 'categories'));
     }
 
-    public function worksDetail(): View
+    public function worksDetail(string $id): View
     {
-        return view('home.worksDetail');
+        $project = Project::find($id);
+
+        return view('home.worksDetail', compact('project'));
     }
 
     public function about(): View

@@ -10,32 +10,29 @@
         </div>
 
         <div class="m-12 text-center">
-            <h1 class="text-4xl font-bold">Project Title</h1>
-            <p class="mt-4 text-lg">Project Category</p>
+            <h1 class="text-4xl font-bold">{{ $project->title }}</h1>
+            <p class="mt-4 text-lg">{{ $project->category->name }}</p>
             <hr class="w-96 border-2 mt-4 rounded-full border-blue-900 mx-auto">
         </div>
 
         <div class="grid grid-cols-2 px-12">
             <div>
-                <p class="px-24">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                    the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <p class="px-24">{{ $project->description }}</p>
             </div>
             <div>
                 <div class="flex">
                     <div class="mx-8">
                         <p class="font-bold">Production House</p>
-                        <p>PH of Project</p>
+                        <p>{{ $project->ph }}</p>
                     </div>
                     <div class="mx-8">
-                        <p class="font-bold">Production House</p>
-                        <p>PH of Project</p>
+                        <p class="font-bold">Client</p>
+                        <p>{{ $project->client }}</p>
                     </div>
                 </div>
                 <div class="mx-8 mt-4">
                     <p class="font-bold">Agency</p>
-                    <p>Agency of Project</p>
+                    <p>{{ $project->agency }}</p>
                 </div>
             </div>
         </div>

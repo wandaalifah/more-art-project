@@ -34,7 +34,7 @@ class AdminProjectController extends Controller
             'client' => 'required',
             'agency' => 'nullable',
             'ph' => 'nullable',
-            'categoryId' => 'required',
+            'category_id' => 'required',
         ]);
 
         Project::create([
@@ -44,7 +44,7 @@ class AdminProjectController extends Controller
             'client' => $request -> client,
             'agency' => $request -> agency,
             'ph' => $request -> ph,
-            'categoryId' => $request -> categoryId,
+            'category_id' => $request -> category_id,
         ]);
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
@@ -67,7 +67,7 @@ class AdminProjectController extends Controller
             'client' => 'required',
             'agency' => 'nullable',
             'ph' => 'nullable',
-            'categoryId' => 'required',
+            'category_id' => 'required',
         ]);
 
         $projects = Project::findOrFail($id);
@@ -79,7 +79,7 @@ class AdminProjectController extends Controller
             'client' => $request -> client,
             'agency' => $request -> agency,
             'ph' => $request -> ph,
-            'categoryId' => $request -> categoryId,
+            'category_id' => $request -> category_id,
         ]);
 
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');

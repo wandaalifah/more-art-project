@@ -32,7 +32,7 @@
             @forelse  ($projects as $project)
                 <div class="relative group aspect-square mx-2 mt-4 shadow-md">
                     @if ($project->first_image_url)
-                        <a href="">
+                        <a href="{{ route('home.works.detail', $project->id) }}">
                             <img src="{{ $project->first_image_url }}" alt="thumbnail-{{ $project->title }}"
                                 class="object-cover w-full h-full">
                             <div

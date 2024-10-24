@@ -20,7 +20,7 @@ class Category extends Model
 
     public function project()
     {
-        return $this->hasMany(Project::class, 'categoryId');
+        return $this->hasMany(Project::class, 'category_id');
     }  
 
     

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProjectCrewController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +25,14 @@ use App\Http\Controllers\HomeController;
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('/projects', AdminProjectController::class);
-        Route::get('/projects-detail/{id}', [AdminProjectController::class, 'detail'])->name('projects.detail');
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/crews', AdminCrewController::class);
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('admin.changePassword');
         Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
+        Route::resource('projects.details', AdminProjectCrewController::class)
+            ->parameters(['details' => 'crew']) 
+            ->only(['index', 'create', 'store', 'edit', 'update', 'show', 'destroy']);
 
         Route::resource('projects.photos', AdminProjectPhotosController::class)->only(['index', 'store', 'destroy']);
     });
@@ -39,6 +42,6 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/works', [HomeController::class, 'works'])->name('home.works');
-Route::get('/works-detail', [HomeController::class, 'worksDetail'])->name('home.works.detail');
+Route::get('/works-detail/{id}', [HomeController::class, 'worksDetail'])->name('home.works.detail');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::post('/send-email', [HomeController::class, 'sendEmail'])->name('home.about.sendEmail');

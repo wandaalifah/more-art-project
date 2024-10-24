@@ -29,10 +29,10 @@
         </h5>
         <div class="form-group mb-4">
             <label class="block mb-2 text-lg font-medium text-gray-900 my-4">Category</label>
-            <select name="categoryId" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            <select name="category_id" class="form-control mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 <option value="">--Pilih Category--</option>
                 @forelse ($categories as $category)
-                    @if ($category->id === $project->categoryId)
+                    @if ($category->id === $project->category_id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
 
                     @else
