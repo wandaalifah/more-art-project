@@ -15,7 +15,7 @@
 
         <form action="{{ route('projects.details.store', $project->id) }}" method="post" class="">
             @csrf
-            <div class="w-full bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+            <div class="w-full bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 font-lora">
                 <div class="flex justify-center mb-6">
                     <a href="{{ route('projects.details.index', $project->id) }}">
                         <svg class="w-[45px] h-[45px] text-red-600 dark:text-white" aria-hidden="true"
@@ -30,7 +30,7 @@
                 <h5 class="text-xl font-bold text-gray-90 px-12 text-center">Assign Crew to {{ $project->title }}</h5>
                 <div>
                     <select name="crew_id" class="form-control mt-8 block w-full border-gray-300 rounded-md shadow-sm">
-                        <option>--Pilih Crew--</option>
+                        <option>--Select Crew--</option>
                         @forelse ($crews as $crew)
                             <option value={{ $crew->id }}>{{ $crew->name }}</option>
                         @empty

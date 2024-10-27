@@ -12,10 +12,10 @@
             </div>
         @endif
 
-        <form action="{{ route('crews.update', $crew->id) }}" method="post" class="">
+        <form action="{{ route('crews.update', $crew->id) }}" method="post">
             @csrf
             @method('PUT')
-            <div class="w-full bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+            <div class="w-full bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 font-lora">
                 <div class="flex justify-center mb-6">
                     <a href="{{ route('crews.index') }}">
                         <svg class="w-[45px] h-[45px] text-red-600 dark:text-white" aria-hidden="true"
@@ -27,7 +27,7 @@
                         </svg>
                     </a>
                 </div>
-                <h5 class="text-xl font-bold text-gray-90 px-12 text-centerz">Update Crew</h5>
+                <h5 class="text-xl font-bold text-gray-90 px-12 text-center">Update Crew</h5>
                 <div>
                     <label for="name" class="block mb-2 text-lg font-medium text-gray-900 my-4">Name</label>
                     <input type="text" id="name" name="name" value="{{ $crew->name }}"

@@ -3,10 +3,10 @@
 @section('content')
     <div class="flex justify-center">
         <div class="container mt-5 px-10">
-            <p class="text-center font-bold text-2xl my-4">Crews</p>
+            <p class="text-center font-semibold text-2xl my-4 font-dmSerif">Crews</p>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 font-lora">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 ID
@@ -60,13 +60,18 @@
                 </table>
             </div>
 
-            <div class="mt-4">
-                <a href="{{ route('crews.create') }}">
-                    <button type="button"
-                        class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                        Create
-                    </button>
-                </a>
+            <div class="flex justify-between items-center mt-4 font-lora">
+                <div class="bg-white-900 rounded-lg">
+                    {{ $crews->links() }}
+                </div>
+                <div class="items-center">
+                    <a href="{{ route('crews.create') }}">
+                        <button type="button"
+                            class="text-white-900 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-md px-5 py-2.5 text-center me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            Create
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

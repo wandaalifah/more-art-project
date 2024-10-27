@@ -23,21 +23,34 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::prefix('admin')->group(function () {
+    Route::post('/', [AuthController::class, 'login'])->name('admin.login');
+    Route::get('/', [AdminController::class, 'index']);
+
     Route::middleware('auth')->group(function () {
-        Route::resource('/projects', AdminProjectController::class);
-        Route::resource('/categories', AdminCategoryController::class);
-        Route::resource('/crews', AdminCrewController::class);
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('admin.changePassword');
         Route::post('/updatePassword', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
-        Route::resource('projects.details', AdminProjectCrewController::class)
-            ->parameters(['details' => 'crew']) 
-            ->only(['index', 'create', 'store', 'edit', 'update', 'show', 'destroy']);
 
+        Route::resource('/projects', AdminProjectController::class);
+        Route::resource('/categories', AdminCategoryController::class);
+        Route::resource('/crews', AdminCrewController::class);
         Route::resource('projects.photos', AdminProjectPhotosController::class)->only(['index', 'store', 'destroy']);
+       
+
+        // Route::resource('projects.details', AdminProjectCrewController::class)
+        //     ->parameters(['details' => 'crew'])     
+        //     ->only(['index', 'create', 'store', 'edit', 'update', 'show', 'destroy']);
+        
+        Route::get('/projects/{project}/crew', [AdminProjectCrewController::class, 'index'])->name('projects.details.index');
+        Route::get('/projects/{project}/crew/create', [AdminProjectCrewController::class, 'create'])->name('projects.details.create');
+        Route::post('/projects/{project}/crew/create', [AdminProjectCrewController::class, 'store'])->name('projects.details.store');
+        Route::get('/projects/{project}/crew/{project_crew}/edit', [AdminProjectCrewController::class, 'edit'])->name('projects.details.edit');
+        Route::put('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'update'])->name('projects.details.update');
+        Route::get('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'show'])->name('projects.details.show');
+        Route::delete('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'destroy'])->name('projects.details.destroy');
+
     });
-    Route::post('/', [AuthController::class, 'login'])->name('admin.login');
-    Route::get('/', [AdminController::class, 'index']);
+   
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');

@@ -15,7 +15,7 @@
     <form action="{{ route('categories.destroy', $category->id) }}" method="post">
       @csrf
       @method("DELETE")
-        <div class="lg:mx-28 bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-center">
+        <div class="lg:mx-28 bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-center font-lora">
           <div class="flex justify-center mb-6">
               <a href="{{route('categories.index')}}">
                 <svg class="w-[45px] h-[45px] text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -24,8 +24,11 @@
               </a>
             </div>
           <h5 class="text-xl font-bold text-gray-90 px-12">Delete Category</h5>
-          <p class="text-xl font-bold">
-            {{$category->id}} - {{ $category->name }} ?
+          <p class="text-xl mt-4">
+            Are you sure you want to delete "{{ $category->name }}" from category?
+          </p>
+          <p class="text-md mt-4 font-bold text-red-600">
+            This will delete all project within the category!
           </p>
           <div class="flex justify-center mx-8 pt-8 align-middle">
             <button type="submit" class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-md px-5 py-2.5 text-center">

@@ -12,10 +12,10 @@
             </div>
         @endif
 
-        <form action="{{ route('projects.details.destroy', [$project->id, $crew->id]) }}" method="post">
+        <form action="{{ route('projects.details.destroy', [$project->id, $crew->pivot->id]) }}" method="post">
             @csrf
             @method('DELETE')
-            <div class="lg:mx-28 bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-center">
+            <div class="lg:mx-28 bg-white-900 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 text-center font-lora">
                 <div class="flex justify-center mb-6">
                     <a href="{{ route('projects.details.index', $project->id) }}">
                         <svg class="w-[45px] h-[45px] text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +27,8 @@
                     </a>
                 </div>
                 <h5 class="text-xl font-bold text-gray-90 px-12">Delete Crew</h5>
-                <p class="text-xl font-bold">
-                    {{ $crew->id }} - {{ $crew->name }} ?
+                <p class="text-xl">
+                    {{ $crew->name }} as {{ $crew->pivot->role }} from {{ $project->title }}?
                 </p>
                 <div class="flex justify-center mx-8 pt-8 align-middle">
                     <button type="submit"

@@ -12,8 +12,8 @@
             </div>
         @endif
 
-        <h1 class="text-center text-2xl mb-8 pt-8">Project Name</h1>
-        <div class="grid grid-cols-2 px-12 pb-8">
+        <h1 class="text-center text-2xl mb-8 pt-8 font-dmSerif font-semibold">{{ $project->title }}</h1>
+        <div class="grid grid-cols-2 px-12 pb-8 font-lora">
             <div>
                 <div class="flex">
                     <div class="mx-8">
@@ -44,19 +44,13 @@
     </div>
 
     <div class="bg-gray-50 my-8 rounded-xl">
-        <h1 class="text-2xl text-center font-bold p-4">Project Crew</h1>
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-gray-50">
-            <thead class="text-xs text-gray-700 uppercase">
+        <h1 class="text-2xl text-center p-4 font-dmSerif font-semibold">Adjust the crews for your project here.</h1>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-gray-50 font-lora">
+            <thead class="text-sm text-gray-700 uppercase font-bold">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
-                        ID
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Role
-                    </th>
+                    <th scope="col" class="px-6 py-3">ID</th>
+                    <th scope="col" class="px-6 py-3">Name</th>
+                    <th scope="col" class="px-6 py-3">Role</th>
                     <th scope="col" class="px-6 py-3 flex justify-center">
                         <span>Action</span>
                     </th>
@@ -67,7 +61,7 @@
                     <tr
                         class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $crew->pivot }}
+                            {{ $crew->pivot->id }}
                         </th>
                         <td class="px-6 py-4 text-gray-900">
                             {{ $crew->name }}
@@ -76,14 +70,14 @@
                             {{ $crew->pivot->role }}
                         </td>
                         <td class="flex py-2 space-x-3 justify-center">
-                            {{-- <a href="{{ route('projects.details.edit', $crew->id) }}"> --}}
-                            <button type="button"
-                                class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:focus:ring-yellow-900">
-                                Update
-                            </button>
-                            {{-- </a> --}}
+                            <a href="{{ route('projects.details.edit', [$project->id, $crew->pivot->id]) }}">
+                                <button type="button"
+                                    class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:focus:ring-yellow-900">
+                                    Update
+                                </button>
+                            </a>
 
-                            <a href="{{ route('projects.details.destroy', [$project->id, $crew->id]) }}">
+                            <a href="{{ route('projects.details.destroy', [$project->id, $crew->pivot->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button"
@@ -102,7 +96,7 @@
         </table>
     </div>
 
-    <div class="flex justify-between items-center mt-4">
+    <div class="flex justify-between items-center mt-4 font-lora">
         <div class="bg-white-900 rounded-lg">
             {{ $crews->links() }}
         </div>

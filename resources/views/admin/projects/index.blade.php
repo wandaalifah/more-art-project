@@ -3,10 +3,10 @@
 @section('content')
     <div class="flex justify-center">
         <div class="container mt-5 px-10">
-            <p class="text-center font-bold text-2xl my-4">Projects</p>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <p class="text-center font-semibold text-2xl my-4 font-dmSerif">Projects</p>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg font-lora">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">ID</th>
                             <th scope="col" class="px-6 py-3">Title</th>
@@ -24,7 +24,7 @@
                             <tr
                                 class="bg-gray-200 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 align-middle">
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     {{ $project->id }}
                                 </th>
                                 <td class="px-6 py-4 text-gray-900">
@@ -78,7 +78,7 @@
                         @empty
                             <tr>
                                 <td colspan="8" class="text-center py-4">
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-danger font-lora">
                                         Project data is empty.
                                     </div>
                                 </td>
@@ -88,7 +88,7 @@
                 </table>
             </div>
 
-            <div class="flex justify-between items-center mt-4">
+            <div class="flex justify-between items-center mt-4 font-lora">
                 <div class="bg-white-900  rounded-lg">
                     {{ $projects->links() }}
                 </div>
