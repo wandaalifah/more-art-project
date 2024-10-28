@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminCrewController;
 use App\Http\Controllers\AdminProjectPhotosController;
+use App\Http\Controllers\AdminCrewProjectController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -48,6 +49,14 @@ Route::prefix('admin')->group(function () {
         Route::put('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'update'])->name('projects.details.update');
         Route::get('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'show'])->name('projects.details.show');
         Route::delete('/projects/{project}/crew/{project_crew}', [AdminProjectCrewController::class, 'destroy'])->name('projects.details.destroy');
+
+        Route::get('/crews/{crew}/project', [AdminCrewProjectController::class, 'index'])->name('crews.details.index');
+        Route::get('/crews/{crew}/project/create', [AdminCrewProjectController::class, 'create'])->name('crews.details.create');
+        Route::post('/crews/{crew}/project/create', [AdminCrewProjectController::class, 'store'])->name('crews.details.store');
+        Route::get('/crews/{crew}/project/{project_crew}/edit', [AdminCrewProjectController::class, 'edit'])->name('crews.details.edit');
+        Route::put('/crews/{crew}/project/{project_crew}', [AdminCrewProjectController::class, 'update'])->name('crews.details.update');
+        Route::get('/crews/{crew}/project/{project_crew}', [AdminCrewProjectController::class, 'show'])->name('crews.details.show');
+        Route::delete('/crews/{crew}/project/{project_crew}', [AdminCrewProjectController::class, 'destroy'])->name('crews.details.destroy');
 
     });
    

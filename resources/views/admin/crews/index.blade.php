@@ -31,7 +31,7 @@
                                     {{ $crew->name }}
                                 </td>
                                 <td class="flex py-2 space-x-3 justify-center">
-                                    <a href="">
+                                    <a href="{{route('crews.details.index', $crew->id)}}">
                                         <button type="button"
                                             class="text-white-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:focus:ring-yellow-900">
                                             Detail

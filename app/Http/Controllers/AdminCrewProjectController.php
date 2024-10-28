@@ -10,32 +10,32 @@ use App\Models\Project;
 use App\Models\Crew;
 use Illuminate\Support\Facades\DB;
 
-    class AdminProjectCrewController extends Controller
+    class AdminCrewProjectController extends Controller
     {
-        public function index(Project $project)
+        public function index(Crew $crew)
         {
         
-            $crews = $project->crews()->latest()->paginate(5);;
+            $projects = $crew->project()->latest()->paginate(5);;
 
-            return view('admin.projects.details.index', ['project' => $project, 'crews' => $crews]);
+            return view('admin.crews.details.index', ['crew' => $crew, 'projects' => $projects]);
         }
 
-        public function edit(Project $project, $project_crew_id): View
+        public function edit(Crew $crew, $project_crew_id): View
         {
-            $crew = $project->crews()->wherePivot('id', $project_crew_id)->first();
+            $project = $crew->project()->wherePivot('id', $project_crew_id)->first();
 
-            if (!$crew) {
+            if (!$project) {
                 abort(404, 'Crew entry not found in the project.');
             }
 
-            return view('admin.projects.details.edit', [
+            return view('admin.crews.details.edit', [
                 'project' => $project,
                 'crew' => $crew,
                 'project_crew_id' => $project_crew_id
             ]);
         }
 
-        public function update(Request $request, Project $project, $id)
+        public function update(Request $request, Crew $crew, $id)
         {
             $validatedData = $request->validate([
                 'role' => 'required|string|max:255',
@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\DB;
         
             if (!$checkExist) {
                 // Row not found, redirect back with an error message
-                return redirect()->route('projects.details.index', $project->id)
+                return redirect()->route('crews.details.index', $crew->id)
                     ->with('error', 'Crew not found or already removed from the project.');
             }
 
@@ -58,49 +58,49 @@ use Illuminate\Support\Facades\DB;
                     'updated_at' => now(),
                 ]);
 
-            return redirect()->route('projects.details.index', $project->id)
+            return redirect()->route('crews.details.index', $crew->id)
                 ->with('success', 'Role updated successfully');
         }
         
-        public function create(Project $project): View
+        public function create(Crew $crew): View
         {
-            $availableCrews = Crew::all();
+            $availableProjects = Project::all();
             
-            return view('admin.projects.details.create', ['project' => $project, 'crews' => $availableCrews]);
+            return view('admin.crews.details.create', ['crew' => $crew, 'projects' => $availableProjects]);
         }
         
-        public function store(Request $request, Project $project)
+        public function store(Request $request, Crew $crew)
         {
             $this->validate($request, [
-                'crew_id' => 'required|exists:crews,id',
+                'project_id' => 'required|exists:projects,id',
                 'role' => 'required|string|max:255',
             ]);
 
-            $project->crews()->attach($request->input('crew_id'), [
+            $crew->project()->attach($request->input('project_id'), [
                 'role' => $request->input('role'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('projects.details.index', $project->id)->with('success', 'Crew assigned successfully.');
+            return redirect()->route('crews.details.index', $crew->id)->with('success', 'Crew assigned successfully.');
         }
 
-        public function show(Project $project, $project_crew_id)
+        public function show(Crew $crew, $project_crew_id)
         {
-            $crew = $project->crews()->wherePivot('id', $project_crew_id)->first();
+            $project = $crew->project()->wherePivot('id', $project_crew_id)->first();
 
             if (!$crew) {
                 abort(404, 'Crew entry not found in the project.');
             }
 
-            return view('admin.projects.details.show', [
+            return view('admin.crews.details.show', [
                 'project' => $project,
                 'crew' => $crew,
                 'project_crew_id' => $project_crew_id
             ]);
         }
 
-        public function destroy(Project $project, $id): RedirectResponse
+        public function destroy(Crew $crew, $id): RedirectResponse
         {
             $checkExist = DB::table('project_crew')
                 ->where('id', $id)
@@ -108,7 +108,7 @@ use Illuminate\Support\Facades\DB;
         
             if (!$checkExist) {
                 // Row not found, redirect back with an error message
-                return redirect()->route('projects.details.index', $project->id)
+                return redirect()->route('crews.details.index', $crew->id)
                     ->with('error', 'Crew not found or already removed from the project.');
             }
 
@@ -116,7 +116,7 @@ use Illuminate\Support\Facades\DB;
                 ->where('id', $id)
                 ->delete($id);
        
-            return redirect()->route('projects.details.index', $project->id)
+            return redirect()->route('crews.details.index', $crew->id)
                 ->with('success', 'Crew removed from the project successfully.');
         
         }
