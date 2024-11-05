@@ -42,11 +42,16 @@ class HomeController extends Controller
         return view('home.works', compact('projects', 'categories'));
     }
 
-    public function worksDetail(string $id): View
+    public function worksDetail(Project $project): View
     {
-        $project = Project::find($id);
+        $images = [];
+        foreach ($project->getMedia() as $image) {
+            $images[] = parse_url($image->getUrl())['path'];
+        }
 
-        return view('home.worksDetail', compact('project'));
+        $crews = $project->crews()->latest()->paginate();
+
+        return view('home.worksDetail', ['project' => $project, 'crews' => $crews, 'images' => $images]);
     }
 
     public function about(): View

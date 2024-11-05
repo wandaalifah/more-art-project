@@ -64,6 +64,6 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/works', [HomeController::class, 'works'])->name('home.works');
-Route::get('/works-detail/{id}', [HomeController::class, 'worksDetail'])->name('home.works.detail');
+Route::get('/works-detail/{project}', [HomeController::class, 'worksDetail'])->name('home.works.detail');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::post('/send-email', [HomeController::class, 'sendEmail'])->name('home.about.sendEmail');
